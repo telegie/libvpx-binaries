@@ -10,4 +10,6 @@ choco install yasm
 
 Add yasm to Windows environment variable Path.
 
-Build for release (and debug) with VS 2019 IDE.
+Build for debug and release with VS 2019 IDE.
+
+Copy the .lib files.
