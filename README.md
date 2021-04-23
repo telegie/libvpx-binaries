@@ -28,6 +28,4 @@ Install emcc for WSL, not use the version installed for Windows.
 
 Install perl: apt install perl
 
-emconfigure ../../libvpx/configure --target=generic-gnu --extra-cflags=-s\ WASM=1\ -DWASM\ -I`dirname \`which emcc\``/system/lib/libcxxabi/include/ --disable-multithread --enable-vp9-decoder --disable-vp8-encoder --disable-vp9-encoder --disable-shared --disable-docs --disable-examples --disable-tools --disable-unit-tests
-
-emmake make -j8
+Run scripts/build-wasm.sh from build/wasm
