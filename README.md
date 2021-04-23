@@ -21,3 +21,13 @@ Copy the .lib files.
 For x86-uwp, in WSL (no extra care for UWP required):
 
 ../../libvpx/configure --target=x86-win32-vs16
+
+For wasm, in WSL:
+
+Install emcc for WSL, not use the version installed for Windows.
+
+Install perl: apt install perl
+
+emconfigure ../../libvpx/configure --target=generic-gnu --extra-cflags=-s\ WASM=1\ -DWASM\ -I`dirname \`which emcc\``/system/lib/libcxxabi/include/ --disable-multithread --enable-vp9-decoder --disable-vp8-encoder --disable-vp9-encoder --disable-shared --disable-docs --disable-examples --disable-tools --disable-unit-tests
+
+emmake make -j8
