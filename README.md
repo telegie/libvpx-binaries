@@ -24,6 +24,8 @@ For x86-uwp, in WSL (no extra care for UWP required):
 
 For wasm, in WSL:
 
+This has to happen in a repository cloned through WSL to have linux newlines.
+
 Install emcc for WSL, not use the version installed for Windows.
 
 Install perl: apt install perl
