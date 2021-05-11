@@ -22,7 +22,7 @@
 
 10. Open vpx.sln using VS 2019 IDE.
 
-11. Turn off Link Time Optimization. If not, using the resulting .lib files lead to compiler warnings.
+11. Turn off Link Time Optimization (Set "Whole Program Optimzation" to "No Whole Program Optimimzation", which results in removing the /GL option). If not, using the resulting .lib files lead to compiler warnings.
 
 12. Build for both debug and release using VS 2019 IDE.
 
