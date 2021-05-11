@@ -30,7 +30,7 @@
 
 
 
-For wasm, in WSL:
+## WASM
 
 1. Open WSL Ubuntu.
 
