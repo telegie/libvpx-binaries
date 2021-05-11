@@ -1,33 +1,45 @@
 # libvpx-binaries
 
-Use WSL Ubuntu.
+## Windows x64/x86 build (UWP does not require a separate build)
 
-apt install yasm
+1. Open WSL Ubuntu.
 
-../../libvpx/configure --target=x86_64-win64-vs16
+2. Clone repository into the Windows filesystem. The repository should be cloned from WSL to avoid an issue with WSL's make not working with Windows new lines.
 
-choco install yasm
+3. apt install perl, apt install yasm
 
-make -j8
+4. mkdir build/XXX
 
-Add yasm to Windows environment variable Path.
+5. For x64, ../../libvpx/configure --target=x86_64-win64-vs16, for x86, ../../libvpx/configure --target=x86-win32-vs16
 
-Build for debug and release with VS 2019 IDE.
+6. make -j8
 
-Copy the .lib files.
+7. Open Powershell
+
+8. choco install yasm
+
+9. Add yasm to Windows environment variable Path.
+
+10. Open vpx.sln using VS 2019 IDE.
+
+11. Turn off Link Time Optimization. If not, using the resulting .lib files lead to compiler warnings.
+
+12. Build for both debug and release using VS 2019 IDE.
+
+11. Copy the .lib files from /build to inside the repository to a version matching its file.
 
 
-
-For x86-uwp, in WSL (no extra care for UWP required):
-
-../../libvpx/configure --target=x86-win32-vs16
 
 For wasm, in WSL:
 
-This has to happen in a repository cloned through WSL to have linux newlines.
+1. Open WSL Ubuntu.
 
-Install emcc for WSL, not use the version installed for Windows.
+2. Clone repository into the Windows filesystem. The repository should be cloned from WSL to avoid an issue with WSL's make not working with Windows new lines.
 
-Install perl: apt install perl
+3. Install emscripten separately for WSL. Do not use the version installed for Windows.
 
-Run scripts/build-wasm.sh from build/wasm
+4. apt install perl
+
+5. mkdir build/wasm, cd build/wasm, then run scripts/build-wasm.sh
+
+6. Copy the .a files from /build to inside the repository to a version matching its file.
