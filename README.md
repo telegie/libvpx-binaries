@@ -29,8 +29,7 @@
 11. Copy the .lib files from /build to inside the repository to a version matching its file.
 
 
-
-For wasm, in WSL:
+## For wasm, in WSL:
 
 1. Open WSL Ubuntu.
 
@@ -43,3 +42,12 @@ For wasm, in WSL:
 5. mkdir build/wasm, cd build/wasm, then run scripts/build-wasm.sh
 
 6. Copy the .a files from /build to inside the repository to a version matching its file.
+
+## For Mac:
+
+1. mkdir build
+
+2. cd build
+
+3. ../libvpx/configure --target=x86_64-darwin20-gcc
+
