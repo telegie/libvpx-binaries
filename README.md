@@ -49,5 +49,5 @@
 
 2. cd build
 
-3. ../libvpx/configure --target=x86_64-darwin20-gcc
+3. ../libvpx/configure --target=x86_64-darwin20-gcc --prefix="../install"
 
