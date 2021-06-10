@@ -1,6 +1,6 @@
 # libvpx-binaries
 
-## Windows x64/x86 build (UWP does not require a separate build)
+## Windows x64 build
 
 1. Open WSL Ubuntu.
 
@@ -10,7 +10,7 @@
 
 4. mkdir build/XXX
 
-5. For x64, ../../libvpx/configure --target=x86_64-win64-vs16, for x86, ../../libvpx/configure --target=x86-win32-vs16
+5. ../../libvpx/configure --target=x86_64-win64-vs16
 
 6. make -j8
 
