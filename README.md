@@ -38,7 +38,7 @@
 
 4. apt install perl
 
-5. mkdir build/wasm, cd build/wasm, then run scripts/build-wasm.sh
+5. mkdir build/wasm32-emscripten, cd build/wasm32-emscripten, then run scripts/build-wasm.sh
 
 6. Copy the .a files from /build to inside the repository to a version matching its file.
 
