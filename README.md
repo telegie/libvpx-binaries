@@ -50,3 +50,18 @@
 
 3. ../libvpx/configure --target=x86_64-darwin20-gcc --prefix="../install"
 
+4. make
+
+5. make install
+
+## For iOS:
+
+1. mkdir build
+
+2. cd build
+
+3. ../libvpx/configure --target=arm64-darwin-gcc --prefix="../install"
+
+4. make
+
+5. make install
