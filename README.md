@@ -28,20 +28,6 @@
 
 13. Copy the .lib files from /build to inside the repository to a version matching its file.
 
-## For wasm, in WSL:
-
-1. Open WSL Ubuntu.
-
-2. Clone repository into the Windows filesystem. The repository should be cloned from WSL to avoid an issue with WSL's make not working with Windows new lines.
-
-3. Install emscripten separately for WSL. Do not use the version installed for Windows.
-
-4. apt install perl
-
-5. mkdir build/wasm32-emscripten, cd build/wasm32-emscripten, then run scripts/build-wasm.sh
-
-6. Copy the .a files from /build to inside the repository to a version matching its file.
-
 ## For Mac:
 
 1. mkdir build
@@ -54,6 +40,22 @@
 
 5. make install
 
+6. Copy files of /install into a folder matching the version and platform.
+
+## For wasm, building using a Mac:
+
+1. mkdir build
+
+2. cd build
+
+3. run ../scripts/configure-wasm.sh
+
+4. emmake make
+
+5. emmake make install
+
+6. Copy files of /install into a folder matching the version and platform.
+
 ## For iOS:
 
 1. mkdir build
@@ -65,3 +67,5 @@
 4. make
 
 5. make install
+
+6. Copy files of /install into a folder matching the version and platform.
