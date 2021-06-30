@@ -50,11 +50,15 @@
 
 3. run ../scripts/configure-wasm.sh
 
-4. emmake make
+4. emmake make -O3
 
 5. emmake make install
 
 6. Copy files of /install into a folder matching the version and platform.
+
+### TODO for wasm build
+
+Add multithreading and SIMD when building this. SIMD support for web assembly is currently experimental, so not yet. reference: https://github.com/brion/ogv.js/blob/master/buildscripts/compileVpxWasmSIMDMT.sh
 
 ## For iOS:
 
