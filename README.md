@@ -50,7 +50,7 @@
 
 3. run ../scripts/configure-wasm.sh
 
-4. emmake make -O3
+4. emmake make
 
 5. emmake make install
 
