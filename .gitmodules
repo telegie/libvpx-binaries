@@ -1,3 +1,6 @@
 [submodule "libvpx"]
 	path = libvpx
 	url = https://github.com/webmproject/libvpx.git
+[submodule "brion-libvpx"]
+	path = brion-libvpx
+	url = https://github.com/brion/libvpx.git
