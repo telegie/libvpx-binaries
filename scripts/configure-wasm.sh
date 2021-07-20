@@ -2,7 +2,7 @@
 
 # from: https://github.com/brion/ogv.js/blob/master/buildscripts/compileVpxWasm.sh
 STRIP=./buildscripts/fake-strip.sh \
-  emconfigure ../libvpx/configure \
+  emconfigure ../brion-libvpx/configure \
     --prefix="../install" \
     --target=generic-gnu \
     --extra-cflags=-DWASM\ -I`dirname \`which emcc\``/system/lib/libcxxabi/include/ \
@@ -13,4 +13,3 @@ STRIP=./buildscripts/fake-strip.sh \
     --disable-tools \
     --disable-unit-tests \
 || exit 1
-/Users/hanseul/GitHub/telespace/deps/libvpx-binaries/scripts/configure-wasm-mt.sh
