@@ -5,12 +5,11 @@ STRIP=./buildscripts/fake-strip.sh \
   emconfigure ../libvpx/configure \
     --prefix="../install" \
     --target=generic-gnu \
-    --extra-cflags=-DWASM\ -I`dirname \`which emcc\``/system/lib/libcxxabi/include/ \
-    --disable-multithread \
+    --extra-cflags=-pthread\ -s\ USE_PTHREADS=1\ -I`dirname \`which emcc\``/system/lib/libcxxabi/include/ \
+    --enable-multithread \
     --disable-shared \
     --disable-docs \
     --disable-examples \
     --disable-tools \
     --disable-unit-tests \
 || exit 1
-/Users/hanseul/GitHub/telespace/deps/libvpx-binaries/scripts/configure-wasm-mt.sh

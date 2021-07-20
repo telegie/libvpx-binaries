@@ -48,7 +48,7 @@
 
 2. cd build
 
-3. run ../scripts/configure-wasm.sh
+3. run ../scripts/configure-wasm.sh (or configure-wasm-mt.sh)
 
 4. emmake make
 
