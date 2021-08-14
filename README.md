@@ -28,20 +28,6 @@
 
 13. Copy the .lib files from /build to inside the repository to a version matching its file.
 
-## For Mac:
-
-1. mkdir build
-
-2. cd build
-
-3. ../libvpx/configure --target=x86_64-darwin20-gcc --prefix="../install"
-
-4. make
-
-5. make install
-
-6. Copy files of /install into a folder matching the version and platform.
-
 ## For wasm, building using a Mac:
 
 1. mkdir build
