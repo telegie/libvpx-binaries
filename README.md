@@ -54,6 +54,10 @@ Add multithreading and SIMD when they are supported by browser. Multihreading is
 
 3. ../libvpx/configure --target=arm64-darwin-gcc --prefix="../install"
 
+or for darwin20
+
+../libvpx/configure --target=arm64-darwin20-gcc --prefix="../install"
+
 4. make
 
 5. make install
