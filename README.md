@@ -1,32 +1,20 @@
 # libvpx-binaries
 
-## Windows x64 build
+## Windows x64 Build
 
-1. Open WSL Ubuntu.
+1. Open msys2 from x64 Native Tools Command Prompt for VS 2022 with the following to open a msys2 shell inheriting PATH environment variable of the command prompt: msys2_shell.cmd -full-path
 
-2. Clone repository into the Windows filesystem. The repository should be cloned from WSL to avoid an issue with WSL's make not working with Windows new lines.
+2. mkdir build
 
-3. apt install perl, apt install yasm
+3. mkdir install
 
-4. mkdir build/XXX
+4. cd build
 
-5. ../../libvpx/configure --target=x86_64-win64-vs16
+5. ../libvpx/configure --target=x86_64-win64-vs16 --prefix=../install
 
 6. make -j8
 
-7. Open Powershell
-
-8. choco install yasm
-
-9. Add yasm to Windows environment variable Path.
-
-10. Open vpx.sln using VS 2019 IDE.
-
-11. Set "Whole Program Optimzation" to "No Whole Program Optimimzation", which results in removing the /GL option, for every VS project. If not, using the resulting .lib files will cause compiler warnings.
-
-12. Build for both debug and release using VS 2019 IDE.
-
-13. Copy the .lib files from /build to inside the repository to a version matching its file.
+7. make install
 
 ## For wasm, building using a Mac:
 
