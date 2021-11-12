@@ -11,12 +11,12 @@
 4. cd build
 
 5. ../libvpx/configure --target=x86_64-win64-vs16 --prefix=../install
+or
+../libvpx/configure --target=x86_64-win64-gcc --prefix=../install
 
 6. make -j8
 
 7. make install
-
-8. Need to copy vpxmd.lib to vpx.md for ffmpeg build.
 
 ## For wasm, building using a Mac:
 
