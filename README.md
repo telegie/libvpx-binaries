@@ -16,6 +16,8 @@
 
 7. make install
 
+8. Need to copy vpxmd.lib to vpx.md for ffmpeg build.
+
 ## For wasm, building using a Mac:
 
 1. mkdir build
