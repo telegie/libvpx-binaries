@@ -18,24 +18,6 @@ or
 
 7. make install
 
-## For wasm, building using a Mac:
-
-1. mkdir build
-
-2. cd build
-
-3. run ../scripts/configure-wasm.sh (or configure-wasm-mt.sh). Note that these scripts use brion-libvpx, a fork of libvpx optimized for wasm.
-
-4. emmake make
-
-5. emmake make install
-
-6. Copy files of /install into a folder matching the version and platform.
-
-### TODO for wasm build
-
-Add multithreading and SIMD when they are supported by browser. Multihreading is not supported by Safari and SIMD support for web assembly is currently experimental in all browsers (i.e., Chrome, Firefox, and Safari). See following for implementation: https://github.com/brion/ogv.js/blob/master/buildscripts/compileVpxWasmSIMDMT.sh
-
 ## For iOS:
 
 1. mkdir build
