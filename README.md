@@ -35,3 +35,12 @@
 4. make
 5. make install
 
+## For iPhone Simulator:
+
+1. mkdir build
+2. cd build
+3. ../libvpx/configure --target=arm64-iphonesimulator-gcc --prefix=../1.10.0/arm64-iphonesimulator
+4. make
+5. make install
+
+Note: A forked version of libvpx with iphone simulator support added is being used.
