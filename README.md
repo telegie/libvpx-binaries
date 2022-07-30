@@ -39,7 +39,7 @@
 
 1. mkdir build
 2. cd build
-3. ../libvpx/configure --target=arm64-iphonesimulator-gcc --prefix=../1.10.0/arm64-iphonesimulator
+3. Run ../scripts/configure-iphonesimulator.sh
 4. make
 5. make install
 
