@@ -1,3 +1,3 @@
 [submodule "libvpx"]
 	path = libvpx
-	url = git@github.com:telegie/libvpx.git
+	url = git@github.com:webmproject/libvpx.git
