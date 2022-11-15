@@ -20,6 +20,21 @@ def build_arm64_mac_binaries():
     subprocess.run(["make", "-C", build_path, "install"], check=True)
 
 
+def build_x64_mac_binaries():
+    here = Path(__file__).parent.resolve()
+    build_path = f"{here}/build/x64-mac"
+    if not os.path.exists(build_path):
+        os.makedirs(build_path)
+
+    subprocess.run([f"{here}/libvpx/configure",
+                    "--target=x86_64-darwin20-gcc",
+                    f"--prefix={here}/install/x64-mac"],
+                   cwd=build_path,
+                   check=True)
+    subprocess.run(["make", "-C", build_path, "-j8"], check=True)
+    subprocess.run(["make", "-C", build_path, "install"], check=True)
+
+
 def build_arm64_ios_binaries():
     here = Path(__file__).parent.resolve()
     build_path = f"{here}/build/arm64-ios"
@@ -50,7 +65,7 @@ def build_arm64_iphonesimulator_binaries():
                                    "--show-sdk-path"],
                                   capture_output=True,
                                   check=True)
-    iphonesimulator_sdk_path = xcrun_output.stdout.decode("utf-8")
+    iphonesimulator_sdk_path = xcrun_output.stdout.decode("utf-8").strip()
     cflags=f"-arch arm64 -isysroot {iphonesimulator_sdk_path}"
 
     env = {"CC": cc, "CXX": cxx, "EXTRA_CFLAGS": cflags}
@@ -67,11 +82,11 @@ def build_arm64_iphonesimulator_binaries():
 
 def main():
     if platform.system() == "Darwin":
-        if platform.machine() == "arm64":
-            build_arm64_mac_binaries()
-            build_arm64_ios_binaries()
-            build_arm64_iphonesimulator_binaries()
-            return
+        build_arm64_mac_binaries()
+        build_x64_mac_binaries()
+        build_arm64_ios_binaries()
+        build_arm64_iphonesimulator_binaries()
+        return
 
     raise Exception(f"libvpx build not supported.")
 
