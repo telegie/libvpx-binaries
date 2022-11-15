@@ -73,7 +73,7 @@ def main():
             build_arm64_iphonesimulator_binaries()
         return
 
-    raise Exception(f"opus build not supported.")
+    raise Exception(f"libvpx build not supported.")
 
 
 if __name__ == "__main__":
