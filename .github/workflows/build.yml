@@ -12,5 +12,8 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Install dependencies
+        run: brew install yasm
+
       - name: Build
         run: python3 build.py
