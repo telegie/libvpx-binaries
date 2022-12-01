@@ -56,7 +56,6 @@ def build_arm64_iphonesimulator_binaries():
     if not os.path.exists(build_path):
         os.makedirs(build_path)
 
-
     cc = "xcrun --sdk iphonesimulator clang"
     cxx = "xcrun --sdk iphonesimulator clang++"
 
@@ -88,6 +87,7 @@ def build_x64_linux_binaries():
 
     subprocess.run([f"{here}/libvpx/configure",
                     "--target=x86_64-linux-gcc",
+                    "--enable-pic",
                     f"--prefix={here}/install/x64-linux"],
                    cwd=build_path,
                    check=True)
