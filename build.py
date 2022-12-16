@@ -131,6 +131,22 @@ def build_x64_linux_binaries():
     subprocess.run(["make", "-C", build_path, "install"], check=True)
 
 
+def build_wasm32_emscripten():
+    here = Path(__file__).parent.resolve()
+    build_path = f"{here}/build/wasm32-emscripten"
+    if not os.path.exists(build_path):
+        os.makedirs(build_path)
+
+    subprocess.run(["emconfigure",
+                    f"{here}/libvpx/configure",
+                    "--target=generic-gnu",
+                    f"--prefix={here}/install/wasm32-emscripten"],
+                   cwd=build_path,
+                   check=True)
+    subprocess.run(["make", "-C", build_path, "-j8"], check=True)
+    subprocess.run(["make", "-C", build_path, "install"], check=True)
+
+
 def main():
     if platform.system() == "Windows":
         build_x64_windows_binaries()
@@ -140,6 +156,7 @@ def main():
         build_x64_mac_binaries()
         build_arm64_ios_binaries()
         build_arm64_iphonesimulator_binaries()
+        build_wasm32_emscripten()
         return
     elif platform.system() == "Linux":
         build_x64_linux_binaries()
