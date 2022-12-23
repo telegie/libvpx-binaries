@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
+import argparse
 import os
 import platform
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -138,8 +140,12 @@ def build_wasm32_emscripten():
         os.makedirs(build_path)
 
     env = os.environ.copy()
+    env["EMCONFIGURE_JS"] = "1"
+    env["STRIP"] = "fake-strip.sh"
+    # env["EXTRA_CFLAGS"] = "-pthread -s USE_PTHREADS=1 -I`dirname `which emcc``/system/lib/libcxxabi/include/"
+    env["CFLAGS"] = "-pthread -s USE_PTHREADS=1"
     env["EXTRA_CFLAGS"] = "-pthread -s USE_PTHREADS=1"
-    env["LDFLAGS"] = "-pthread"
+    env["LDFLAGS"] = "-pthread -s USE_PTHREADS=1"
 
     subprocess.run(["emconfigure",
                     f"{here}/libvpx/configure",
@@ -154,19 +160,27 @@ def build_wasm32_emscripten():
                    cwd=build_path,
                    check=True,
                    env=env)
-    subprocess.run(["emmake", "make", "-C", build_path, "-j8"], check=True)
-    subprocess.run(["emmake", "make", "-C", build_path, "install"], check=True)
+    subprocess.run(["emmake", "make", "-C", build_path, "-j8"], check=True, env=env)
+    subprocess.run(["emmake", "make", "-C", build_path, "install"], check=True, env=env)
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--rebuild", action="store_true")
+    parser_args = parser.parse_args()
+
+    here = Path(__file__).parent.resolve()
+    if parser_args.rebuild:
+        shutil.rmtree(f"{here}/build")
+
     if platform.system() == "Windows":
         build_x64_windows_binaries()
         return
     elif platform.system() == "Darwin":
-        build_arm64_mac_binaries()
-        build_x64_mac_binaries()
-        build_arm64_ios_binaries()
-        build_arm64_iphonesimulator_binaries()
+        # build_arm64_mac_binaries()
+        # build_x64_mac_binaries()
+        # build_arm64_ios_binaries()
+        # build_arm64_iphonesimulator_binaries()
         build_wasm32_emscripten()
         return
     elif platform.system() == "Linux":
