@@ -140,7 +140,7 @@ def build_wasm32_emscripten():
         os.makedirs(build_path)
 
     env = os.environ.copy()
-    env["CFLAGS"] = "-pthread"
+    env["CFLAGS"] = "-pthread -fPIC"
     env["LDFLAGS"] = "-pthread"
 
     subprocess.run(["emconfigure",
