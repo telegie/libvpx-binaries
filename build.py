@@ -137,12 +137,23 @@ def build_wasm32_emscripten():
     if not os.path.exists(build_path):
         os.makedirs(build_path)
 
+    env = os.environ.copy()
+    env["EXTRA_CFLAGS"] = "-pthread -s USE_PTHREADS=1"
+    env["LDFLAGS"] = "-pthread"
+
     subprocess.run(["emconfigure",
                     f"{here}/libvpx/configure",
                     "--target=generic-gnu",
-                    f"--prefix={here}/output/wasm32-emscripten"],
+                    f"--prefix={here}/output/wasm32-emscripten",
+                    "--enable-multithread",
+                    "--disable-shared",
+                    "--disable-docs",
+                    "--disable-examples",
+                    "--disable-tools",
+                    "--disable-unit-tests"],
                    cwd=build_path,
-                   check=True)
+                   check=True,
+                   env=env)
     subprocess.run(["emmake", "make", "-C", build_path, "-j8"], check=True)
     subprocess.run(["emmake", "make", "-C", build_path, "install"], check=True)
 
