@@ -143,8 +143,8 @@ def build_wasm32_emscripten():
                     f"--prefix={here}/install/wasm32-emscripten"],
                    cwd=build_path,
                    check=True)
-    subprocess.run(["make", "-C", build_path, "-j8"], check=True)
-    subprocess.run(["make", "-C", build_path, "install"], check=True)
+    subprocess.run(["emmake", "make", "-C", build_path, "-j8"], check=True)
+    subprocess.run(["emmake", "make", "-C", build_path, "install"], check=True)
 
 
 def main():
