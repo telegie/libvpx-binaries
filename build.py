@@ -49,7 +49,7 @@ def build_arm64_mac_binaries():
 
     subprocess.run([f"{here}/libvpx/configure",
                     "--target=arm64-darwin20-gcc",
-                    f"--prefix={here}/install/arm64-mac"],
+                    f"--prefix={here}/output/arm64-mac"],
                    cwd=build_path,
                    check=True)
     subprocess.run(["make", "-C", build_path, "-j8"], check=True)
@@ -64,7 +64,7 @@ def build_x64_mac_binaries():
 
     subprocess.run([f"{here}/libvpx/configure",
                     "--target=x86_64-darwin20-gcc",
-                    f"--prefix={here}/install/x64-mac"],
+                    f"--prefix={here}/output/x64-mac"],
                    cwd=build_path,
                    check=True)
     subprocess.run(["make", "-C", build_path, "-j8"], check=True)
@@ -79,7 +79,7 @@ def build_arm64_ios_binaries():
 
     subprocess.run([f"{here}/libvpx/configure",
                     "--target=arm64-darwin-gcc",
-                    f"--prefix={here}/install/arm64-ios"],
+                    f"--prefix={here}/output/arm64-ios"],
                    cwd=build_path,
                    check=True)
     subprocess.run(["make", "-C", build_path, "-j8"], check=True)
@@ -107,7 +107,7 @@ def build_arm64_iphonesimulator_binaries():
 
     subprocess.run([f"{here}/libvpx/configure",
                     "--target=generic-gnu",
-                    f"--prefix={here}/install/arm64-iphonesimulator"],
+                    f"--prefix={here}/output/arm64-iphonesimulator"],
                    cwd=build_path,
                    check=True,
                    env=env)
@@ -124,7 +124,7 @@ def build_x64_linux_binaries():
     subprocess.run([f"{here}/libvpx/configure",
                     "--target=x86_64-linux-gcc",
                     "--enable-pic",
-                    f"--prefix={here}/install/x64-linux"],
+                    f"--prefix={here}/output/x64-linux"],
                    cwd=build_path,
                    check=True)
     subprocess.run(["make", "-C", build_path, "-j8"], check=True)
@@ -140,7 +140,7 @@ def build_wasm32_emscripten():
     subprocess.run(["emconfigure",
                     f"{here}/libvpx/configure",
                     "--target=generic-gnu",
-                    f"--prefix={here}/install/wasm32-emscripten"],
+                    f"--prefix={here}/output/wasm32-emscripten"],
                    cwd=build_path,
                    check=True)
     subprocess.run(["emmake", "make", "-C", build_path, "-j8"], check=True)
