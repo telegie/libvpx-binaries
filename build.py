@@ -140,13 +140,13 @@ def build_wasm32_emscripten():
         os.makedirs(build_path)
 
     env = os.environ.copy()
-    env["CFLAGS"] = "-pthread -fPIC"
     env["LDFLAGS"] = "-pthread"
 
     subprocess.run(["emconfigure",
                     f"{here}/libvpx/configure",
                     "--target=generic-gnu",
                     f"--prefix={here}/output/wasm32-emscripten",
+                    "--extra-cflags=-pthread -s USE_PTHREADS=1",
                     "--enable-multithread",
                     "--disable-shared",
                     "--disable-docs",
