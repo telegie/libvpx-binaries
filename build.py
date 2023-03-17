@@ -118,6 +118,8 @@ def build_arm64_iphonesimulator_binaries():
 
 
 def build_x64_linux_binaries():
+    subprocess.run(["sudo", "apt", "install", "-y", "yasm"], check=True)
+
     here = Path(__file__).parent.resolve()
     build_path = f"{here}/build/x64-linux"
     if not os.path.exists(build_path):
