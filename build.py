@@ -32,18 +32,28 @@ def build_x64_windows_binaries(rebuild):
     build_path = f"{here}/build/x64-windows"
     output_path = f"{here}/output/x64-windows"
 
-    if not rebuild and os.path.exists(output_path):
-        print("libvpx x64-windows build already built")
-        return
+    #if not rebuild and os.path.exists(output_path):
+    #    print("libvpx x64-windows build already built")
+    #    return
 
     if not os.path.exists(build_path):
         os.makedirs(build_path)
 
-    mingw_here = str(here).replace("\\", "/")
+    # TODO: Support other drives than C drive.
+    mingw_here = str(here).replace("C:\\", "/c/").replace("\\", "/")
     run_in_mingw(["/bin/bash",
                   "--login",
                   f"{here}/mingw_build.sh",
                   mingw_here,
+                  build_path],
+                  check=True)
+    subprocess.run(["MSBuild.exe",
+                    f"{build_path}/vpx.sln",
+                    "/p:Configuration=Release"],
+                    check=True)
+    run_in_mingw(["/bin/bash",
+                  "--login",
+                  f"{here}/mingw_install.sh",
                   build_path],
                   check=True)
 

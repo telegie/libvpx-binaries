@@ -1,7 +1,8 @@
 set -e
 
 pushd $2
-"$1/libvpx/configure" --target=x86_64-win64-gcc "--prefix=$1/output/x64-windows"
+# run configure to create Makefile
+"$1/libvpx/configure" --target=x86_64-win64-vs17 "--prefix=$1/output/x64-windows"
+# run make to create VS .sln file and .vcxproj files.
 make -j8
-make install
 popd
