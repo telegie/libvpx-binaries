@@ -24,17 +24,22 @@ def run_in_mingw(extra_args, check=False):
 
     args = [msys64_env_path, "MSYSTEM=MINGW64"]
     args = args + extra_args
-    subprocess.run(args,
-                   check=check)
+    subprocess.run(args, check=check)
 
 
-def build_x64_windows_binaries():
+def build_x64_windows_binaries(rebuild):
     here = Path(__file__).parent.resolve()
     build_path = f"{here}/build/x64-windows"
+    output_path = f"{here}/output/x64-windows"
+
+    if not rebuild and os.path.exists(output_path):
+        print("libvpx x64-windows build already built")
+        return
+
     if not os.path.exists(build_path):
         os.makedirs(build_path)
-    mingw_here = str(here).replace("\\", "/")
 
+    mingw_here = str(here).replace("\\", "/")
     run_in_mingw(["/bin/bash",
                   "--login",
                   f"{here}/mingw_build.sh",
@@ -177,7 +182,7 @@ def main():
             shutil.rmtree(output_path)
 
     if platform.system() == "Windows":
-        build_x64_windows_binaries()
+        build_x64_windows_binaries(parser_args.rebuild)
         return
     elif platform.system() == "Darwin":
         build_arm64_mac_binaries()
