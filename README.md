@@ -1,3 +1,5 @@
+Archieved: has been replaced by the /libvpx-binaries folder in ffmpeg-binaries.
+
 # libvpx-binaries
 
 ## How to Build
